@@ -1,0 +1,47 @@
+<!------- Container Fluid start ------->
+<div class="container-fluid">
+  <!------- Content area start ------->
+  <div class="layout-specing">
+    <div class="row">
+      <!------- Page heading and breadcrumb ------->
+      <div class="col-xl-9 col-lg-6 col-md-4">
+        <h5 class="mb-0">Appointment</h5>
+
+        <nav class="d-inline-block mt-2">
+          <ul
+            class="breadcrumb breadcrumb-muted bg-transparent rounded mb-0 p-0"
+          >
+            <li class="breadcrumb-item">
+              <a href="dashboard.html"> Telimedicine </a>
+            </li>
+
+            <li class="breadcrumb-item active">All Doctors</li>
+          </ul>
+        </nav>
+      </div>
+
+      <!------- Add new doctor button ------->
+      <div class="col-xl-3 col-md-6 mt-4 mt-md-0 text-md-end">
+        <a (click)="redirect()" class="btn btn-primary">Add New Doctor</a>
+      </div>
+    </div>
+
+    <!------- All doctors list as cards start ------->
+    <div class="row row-cols-md-2 row-cols-lg-5">
+      <!-- Doctors cards -->
+      @for (item of doctors; track $index) {
+      <app-doc-card
+        [doctor]="item"
+        (onClick)="selectedCard(item)"
+      ></app-doc-card>
+      }
+
+      <!-- applaying route -->
+      <router-outlet></router-outlet>
+      <!-- end applying route -->
+    </div>
+    <!------- All doctors list as cards end ------->
+  </div>
+  <!------- Content area end ------->
+</div>
+<!------- Container Fluid end ------->

@@ -1,0 +1,495 @@
+<!------- Container Fluid start ------->
+<div class="container-fluid">
+  <!------- Content area start ------->
+  <div class="layout-specing">
+    <!------- Page heading and breadcrumb ------->
+    <div class="d-md-flex justify-content-between">
+      <!------- Page heading ------->
+      <h5 class="mb-0">Hospital/Clinic List</h5>
+
+      <!-- extra btn -->
+      <!-- <button type="button" class="btn btn-primary" (click)="onClick(content)">
+        Small modal
+      </button> -->
+
+      <!------- Page breadcrumb ------->
+      <nav class="d-inline-block mt-4 mt-sm-0">
+        <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
+          <li class="breadcrumb-item">
+            <a href="dashboard.html">Telimedicine</a>
+          </li>
+          <li class="breadcrumb-item active">Hospital/Clinic</li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-lg-4 col-12 ms-auto text-end">
+        <div
+          class="btn btn-primary"
+          (click)="onClick(-1, 'addHospital', containt)"
+        >
+          <i class="fa-solid fa-circle-plus me-1"></i>
+          Add New Authority
+        </div>
+
+        <!-- <button
+          type="button"
+          class="btn btn-primary"
+          (click)="onClick(-1,'addHospital',containt)"
+        >
+          <i class="fa-solid fa-circle-plus me-1"></i>
+          Add New Authority
+        </button> -->
+      </div>
+
+      <div class="col-12 mt-4">
+        <div class="table-responsive bg-white shadow rounded">
+          <table class="table mb-0 table-center text-center">
+            <thead class="text-center">
+              <tr>
+                <th class="border-bottom p-3">Authority Name</th>
+
+                <th class="border-bottom p-3" style="min-width: 100px">
+                  Regestration/Licence Number
+                </th>
+
+                <th class="border-bottom p-3">Owner Name</th>
+
+                <th class="border-bottom p-3">Mobile</th>
+
+                <th class="border-bottom p-3">Address</th>
+
+                <th class="border-bottom p-3">Type</th>
+
+                <th class="border-bottom p-3">No. of doctors</th>
+
+                <th class="border-bottom p-3">Payment Slab</th>
+
+                <th class="border-bottom p-3" style="min-width: 150px">
+                  Action
+                </th>
+              </tr>
+            </thead>
+
+            <tbody class="text-center">
+              <!-- Adding hospital/clinic data here -->
+              @for (item of hospitalList; track $index) {
+
+              <tr>
+                <td class="p-3">
+                  <a href="#" class="text-dark">
+                    {{ item.name }}
+                  </a>
+                </td>
+
+                <td class="p-3">
+                  <a href="#" class="text-dark">
+                    {{ item.registeration_number }}
+                  </a>
+                </td>
+
+                <td class="p-3">
+                  <a href="#" class="text-dark">
+                    {{ item.owner_name }}
+                  </a>
+                </td>
+
+                <td class="p-3">{{ item.phone }}</td>
+
+                <td class="p-3">
+                  {{ item.address }}
+                </td>
+
+                <td class="p-3">
+                  <span class="badge bg-primary">
+                    {{ item.type }}
+                  </span>
+                </td>
+
+                <td class="p-3">
+                  <!-- {{item.userId}} -->
+                  5 Doctors
+                </td>
+
+                <td class="p-3">
+                  {{ item.payment }}
+                </td>
+
+                <td class="p-3">
+                  <!------- View button ------->
+                  <button
+                    type="button"
+                    class="btn btn-icon btn-pills btn-soft-primary"
+                    (click)="onClick(item.id, 'viweProfile', viweProfile)"
+                  >
+                    <i class="fa-regular fa-eye"></i>
+                  </button>
+                  <!-- <a
+                    href="#"
+                    class="btn btn-icon btn-pills btn-soft-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#showauthority"
+                    (click)="showInfo(item.id)"
+                  >
+                    <i class="fa-regular fa-eye"></i>
+                  </a> -->
+
+                  <!------- Edit button ------->
+
+                  <button
+                    type="button"
+                    class="btn btn-icon btn-pills btn-soft-danger ms-2"
+                    (click)="onClick(item.id, 'updateHospital', containt)"
+                  >
+                    <i class="fa-regular fa-pen-to-square"></i>
+                  </button>
+                  <!-- <a
+                    href="#edithospital"
+                    data-bs-toggle="modal"
+                    class="btn btn-icon btn-pills btn-soft-danger ms-2"
+                    (click)="editForm(item)"
+                  >
+                    <i class="fa-regular fa-pen-to-square"></i>
+                  </a> -->
+                </td>
+              </tr>
+
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!------- Content area end ------->
+</div>
+<!------- Container Fluid end ------->
+
+<!-- form add hospital  -->
+<ng-template #containt let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title" id="modal-title">
+      {{
+        currOperation == "addHospital" ? "Add New Authority" : " Edit Authority"
+      }}
+    </h5>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <!-- Form starts here -->
+    <form [formGroup]="authorityForm">
+      <!-- Form fields -->
+      <div class="p-2 rounded box-shadow">
+        <div class="row">
+          <div class="col-lg-6 col-12">
+            <div class="mb-3">
+              <label class="form-label">Authority Type</label>
+
+              @if (Type && Type.invalid && Type.touched) {
+              <span class="text-danger">*</span>
+              }
+              <select class="form-select form-control" formControlName="type">
+                <option class="d-none">Select Authority Type</option>
+                <option value="hospital">Hospital</option>
+                <option value="clinic">Clinic</option>
+                <option value="nursingHome">Nursing Home</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-12">
+            <div class="mb-3">
+              <label class="form-label">
+                Authority Name
+
+                <!-- validation -->
+                @if (AuthorityName && AuthorityName.invalid &&
+                AuthorityName.touched ) {
+                <span class="text-danger">*</span>
+                }
+              </label>
+
+              <input
+                name="name"
+                id="name"
+                type="text"
+                class="form-control"
+                placeholder="Authority Name :"
+                formControlName="name"
+              />
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-12">
+            <div class="mb-3">
+              <label class="form-label">
+                Regestration Number @if(RegisterationNumber &&
+                RegisterationNumber.invalid && RegisterationNumber.touched){
+                <span class="text-danger">*</span>
+                }
+              </label>
+
+              <input
+                name="name"
+                id="name"
+                type="number"
+                class="form-control"
+                placeholder="Regestration number :"
+                formControlName="registeration_number"
+              />
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-12">
+            <div class="mb-3">
+              <label class="form-label">
+                Owner Name @if(OwnerName && OwnerName.invalid &&
+                OwnerName.touched){
+                <span class="text-danger">*</span>
+                }
+              </label>
+
+              <input
+                name="name"
+                id="name"
+                type="text"
+                class="form-control"
+                placeholder="Owner name :"
+                formControlName="owner_name"
+              />
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-12">
+            <div class="mb-3">
+              <label class="form-label">
+                Mobile @if(Phone && Phone.invalid && Phone.touched){
+                <span class="text-danger">*</span>
+                }
+              </label>
+
+              <input
+                name="name"
+                id="name"
+                type="number"
+                class="form-control"
+                placeholder="Mobile no :"
+                formControlName="phone"
+              />
+            </div>
+          </div>
+          <!-- email -->
+          <div class="col-lg-6 col-12">
+            <div class="mb-3">
+              <label class="form-label">
+                Email @if(Email && Email.invalid && Email.touched){
+                <span class="text-danger">*</span>
+                }
+              </label>
+
+              <input
+                name="name"
+                id="name"
+                type="text"
+                class="form-control"
+                placeholder="Email:"
+                formControlName="email"
+              />
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-12">
+            <div class="mb-3">
+              <label class="form-label">
+                Dr.s Assositated with us @if(DrAssositated &&
+                DrAssositated.invalid && DrAssositated.touched){
+                <span class="text-danger">*</span>
+                }
+              </label>
+
+              <input
+                name="name"
+                id="name"
+                type="number"
+                class="form-control"
+                placeholder="No of dr :"
+                formControlName="drAssositated"
+              />
+            </div>
+          </div>
+
+          <!-- image -->
+          <div
+            class="col-lg-6 col-12 d-flex align-items-center justify-content-center"
+          >
+            <div class="mb-3">
+              <label class="form-label">
+                @if(Email && Email.invalid && Email.touched){
+                @if(Email.hasError('email')){
+                <span class="text-danger">*</span>
+                }@else {
+                <span class="text-danger">*</span>
+                } }
+              </label>
+
+              <input
+                type="file"
+                class="d-none"
+                accept="image/*"
+                id="upimage"
+                name="doctorimage"
+                (change)="onImagePicked($event)"
+              />
+
+              <label for="upimage" class="btn btn-primary mt-4"
+                >Upload picture</label
+              >
+            </div>
+          </div>
+
+          <!-- payment -->
+          <div class="col-lg-12 col-12">
+            <div class="mb-3">
+              <label class="form-label">Select Payment Plan</label>
+              @if(Payment && Payment.invalid && Payment.touched){
+              <span class="text-danger">*</span>
+              }
+
+              <select
+                class="form-select form-control"
+                formControlName="payment"
+              >
+                <option class="d-none">Select Payment Plan</option>
+                <option>0-10 Doctors (1000$)</option>
+                <option>11-50 Doctors (4000$)</option>
+                <option>50-100 Doctors (10000$)</option>
+                <option>100> Doctors (178000$)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- address -->
+          <div class="col-lg-12 col-12">
+            <div class="mb-3">
+              <label class="form-label">Address</label>
+              @if(Address && Address.invalid && Address.touched){
+              <span class="text-danger">*</span>
+              }
+
+              <textarea
+                id="comments"
+                rows="2"
+                class="form-control"
+                placeholder="Authority address :"
+                formControlName="address"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Add other fields -->
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="modal.dismiss('Cancel click')"
+    >
+      Cancel
+    </button>
+    <button type="button" class="btn btn-primary" (click)="onSubmit()">
+      Submit
+    </button>
+  </div>
+</ng-template>
+<!--  -->
+
+<!-- viwe profile using ngb model -->
+<ng-template #viweProfile let-modal>
+  <div class="modal-header border-bottom">
+    <h5 class="modal-title" id="LoginForm-title">Authority Detials</h5>
+
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <div class="rounded shadow overflow-hidden">
+      <div class="card border-0">
+        <img src="photos/authoritybanner.jpeg" class="img-fluid" alt="" />
+      </div>
+
+      <div
+        class="text-center avatar-profile margin-nagative mt-n5 position-relative pb-4 border-bottom"
+      >
+        <img
+          src="{{ currentHospitalInfo.logo }}"
+          class="rounded-circle shadow-md avatar avatar-md-md"
+          alt=""
+        />
+        <h5 class="mt-3 mb-1">{{ currentHospitalInfo.name }}</h5>
+
+        <span class="badge bg-primary"> Hospital </span>
+      </div>
+
+      <div class="list-unstyled p-3">
+        <div class="d-flex align-items-center mt-2">
+          <i class="fa-regular fa-registered text-primary me-2"></i>
+          <h6 class="mb-0">Regestration Number</h6>
+          <p class="text-muted mb-0 ms-2">
+            {{ currentHospitalInfo.registeration_number }}
+          </p>
+        </div>
+
+        <div class="d-flex align-items-center mt-2">
+          <i class="fa-solid fa-person-rifle text-primary me-2"></i>
+          <h6 class="mb-0">Owner Name</h6>
+          <p class="text-muted mb-0 ms-2">
+            {{ currentHospitalInfo.owner_name }}
+          </p>
+        </div>
+
+        <div class="d-flex align-items-center mt-2">
+          <i class="fa-solid fa-phone-volume text-primary me-2"></i>
+          <h6 class="mb-0">Phone No.</h6>
+          <p class="text-muted mb-0 ms-2">
+            {{ currentHospitalInfo.phone }}
+          </p>
+        </div>
+
+        <div class="d-flex align-items-center mt-2">
+          <i class="fa-solid fa-user-doctor text-primary me-2"></i>
+          <h6 class="mb-0">No. of Doctors</h6>
+          <p class="text-muted mb-0 ms-2">95 Doctors</p>
+        </div>
+
+        <div class="d-flex align-items-center mt-2">
+          <i class="fa-solid fa-sack-dollar text-primary me-2"></i>
+          <h6 class="mb-0">Payment Slab</h6>
+          <p class="text-muted mb-0 ms-2">{{ currentHospitalInfo.type }}</p>
+        </div>
+
+        <div class="mt-2">
+          <h6 class="mb-0">
+            <i class="fa-solid fa-location-crosshairs text-primary me-2"></i>
+            Address :
+          </h6>
+
+          <p class="text-muted mb-0 ms-2">
+            {{ currentHospitalInfo.address }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

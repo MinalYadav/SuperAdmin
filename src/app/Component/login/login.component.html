@@ -1,0 +1,123 @@
+<!------- Loader start ------->
+<!-- <div id="preloader" class="d-none">
+        <div id="status">
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+        </div>
+    </div> -->
+<!------- Loader end ------->
+
+<!-- Signin Component  -->
+<section class="bg-home d-flex bg-light align-items-center">
+  <div class="container-fluid">
+    <div class="row align-items-center justify-content-evenly">
+      <div class="col-lg-7 col-12">
+        <img
+          src="photos/doctor-teleconsulting-patient-laptop.jpg"
+          id="main-img"
+          class="w-100 h-100"
+        />
+      </div>
+
+      <div class="col-lg-4 col-md-8">
+        <div class="card login-page shadow rounded">
+          <div class="card-body">
+            <!------- Website logo ------->
+            <div class="text-center mb-4">
+              <img
+                src="photos/logo-icon.png"
+                height="22"
+                style="vertical-align: sub"
+                class="d-inline-block"
+                alt=""
+              />
+
+              <span
+                class="d-inline-block fs-5 fw-bold text-uppercase"
+                style="letter-spacing: 2px"
+              >
+                Telimedicine
+              </span>
+            </div>
+
+            <h4 class="text-center">Sign In to Telimedicine admin</h4>
+            <!-- (ngSubmit)="onSubmit()" -->
+            <!-- Form -->
+            <form action="#" class="login-form mt-4" [formGroup]="siginForm">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="mb-4">
+                    <label class="form-label">
+                      Email
+                      <!-- email Validation (error message) -->
+                      @if (userEmail && userEmail.invalid && userEmail.touched){
+                      @if(userEmail.hasError('required')){
+                      <span class="text-danger">*Email is required</span>
+                      } @if(userEmail.hasError('email')){
+                      <span class="text-danger">*Invalid email format.</span>
+                      } }
+                    </label>
+
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Enter your email"
+                      name="email"
+                      formControlName="email"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-lg-12">
+                  <div class="mb-4">
+                    <label class="form-label">
+                      Password @if(userPassword && userPassword.invalid &&
+                      userPassword.touched){
+                      @if(userPassword.hasError("required")){
+                      <span class="text-danger">*Password is required.</span>
+                      } @if(userPassword.hasError('minlength')){
+                      <span class="text-danger"
+                        >*Password must be at least 8 characters.</span
+                      >
+                      } }
+                    </label>
+
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Enter password"
+                      required=""
+                      formControlName="password"
+                    />
+                  </div>
+                </div>
+
+                <!------- Sign in button ------->
+                <div class="col-lg-6 mb-0 mr-auto">
+                  <!-- <button type="submit" class="btn btn-primary d-block px-120" [disabled]="siginForm.invalid">
+                                        Sign in as admin
+                                    </button> -->
+                  <a
+                    role="button"
+                    class="btn btn-primary d-block px-0"
+                    (click)="onSubmit(siginForm.invalid)"
+                  >
+                    Sign in as admin
+                  </a>
+                </div>
+
+                <div class="col-lg-6 mb-0 ms-auto">
+                  <a class="btn btn-success d-block px-0">
+                    Sign in as call center
+                  </a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,345 @@
+<!------- Container Fluid start ------->
+<div class="container-fluid">
+  <!------- Content area start ------->
+  <div class="layout-specing">
+    <!------- Page heading and breadcrumb ------->
+    <div class="d-md-flex justify-content-between">
+      <!------- Page heading ------->
+      <h5 class="mb-0">Pharmacies List</h5>
+
+      <!------- Page breadcrumb ------->
+      <nav class="d-inline-block mt-4 mt-sm-0">
+        <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
+          <li class="breadcrumb-item">
+            <a routerLink="/layout/adminDashboard">Telimedicine</a>
+          </li>
+          <li  class="breadcrumb-item active">Pharmacies</li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-lg-4 col-12 ms-auto text-end">
+        <div class="btn btn-primary" (click)="onClick('addPharma', containt)">
+          <i class="fa-solid fa-circle-plus me-1"></i>
+          Add New Pharmacy
+        </div>
+        <!-- <a  data-bs-toggle="modal" class="btn btn-primary">
+          <i class="fa-solid fa-circle-plus me-1"></i>
+          Add New Pharmacy
+        </a> -->
+      </div>
+
+      <div class="col-12 mt-4">
+        <div class="table-responsive bg-white shadow rounded">
+          <table class="table mb-0 table-center text-center">
+            <thead class="text-center">
+              <tr>
+                <th class="border-bottom p-3" style="min-width: 100px">
+                  Pharmacy Name
+                </th>
+
+                <th class="border-bottom p-3" style="min-width: 100px">
+                  Regestration/Licence Number
+                </th>
+
+                <th class="border-bottom p-3" style="min-width: 100px">
+                  Owner Name
+                </th>
+
+                <th class="border-bottom p-3">Mobile</th>
+
+                <th class="border-bottom p-3">Address</th>
+
+                <th class="border-bottom p-3" style="min-width: 100px">Type</th>
+
+                <th class="border-bottom p-3" style="min-width: 100px">
+                  Action
+                </th>
+              </tr>
+            </thead>
+
+            <tbody class="text-center">
+              @for (item of pharmaData; track $index) {
+              <tr>
+                <td class="p-3">
+                  <a  class="text-dark">{{ item.name }}</a>
+                </td>
+
+                <td class="p-3">
+                  <a  class="text-dark">
+                    {{ item.registeration_number }}
+                  </a>
+                </td>
+
+                <td class="p-3">
+                  <a  class="text-dark">{{ item.owner_name }}</a>
+                </td>
+
+                <td class="p-3">{{ item.phone }}</td>
+
+                <td class="p-3">1451 - ABC Street, Saudi arebia</td>
+
+                <td class="p-3">
+                  <a class="text-dark">
+                    <span class="badge bg-primary"> Individual </span>
+                  </a>
+                </td>
+
+                <td class="p-3">
+                  <!------- Edit button ------->
+                  <a
+                    class="btn btn-icon btn-pills btn-soft-danger ms-2"
+                    (click)="onClick('updatePharma', containt)"
+                  >
+                    <i class="fa-regular fa-pen-to-square"></i>
+                  </a>
+                </td>
+              </tr>
+
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!------- Content area end ------->
+</div>
+<!------- Container Fluid end ------->
+
+<ng-template #containt let-modal>
+  <div class="modal-header" >
+    <h5 class="modal-title" id="modal-title">{{currOperation == 'addPharma'?'Add New Pharmacy':' Edit Pharmacy'}}</h5>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <!-- moduel body -->
+  <div class="modal-body" [formGroup]="formData">
+    <div class="p-2 rounded box-shadow">
+      <div class="row">
+        <div class="col-lg-6 col-12">
+          <div class="mb-3">
+            <label class="form-label">
+              Pharmacy Name
+              @if (Name && Name.invalid && Name.touched) {
+                <span class="text-danger">*</span>
+              }
+            </label>
+
+            <input
+              name="name"
+              id="name"
+              type="text"
+              class="form-control"
+              formControlName="name"
+              placeholder="Laboratry Name :"
+            />
+          </div>
+        </div>
+
+        <!-- regintration number  -->
+        <div class="col-lg-6 col-12">
+          <div class="mb-3">
+            <label class="form-label">
+              Regestration Number
+              @if (Registeration_number && Registeration_number.invalid && Registeration_number.touched) {
+                <span class="text-danger">*</span>
+              }
+            </label>
+
+            <input
+              name="name"
+              id="name"
+              type="text"
+              class="form-control"
+              formControlName="registeration_number"
+              placeholder="Regestration number :"
+            />
+          </div>
+        </div>
+
+        <!-- Owner name -->
+        <div class="col-lg-6 col-12">
+          <div class="mb-3">
+            <label class="form-label">
+              Owner Name
+              @if (Owner_name && Owner_name.invalid && Owner_name.touched) {
+                <span class="text-danger">*</span>
+              }
+            </label>
+
+            <input
+              name="name"
+              id="name"
+              type="text"
+              class="form-control"
+              formControlName="owner_name"
+              placeholder="Owner name :"
+            />
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="col-lg-6 col-12">
+          <div class="mb-3">
+            <label class="form-label">
+              Mobile
+              @if(Phone && Phone.invalid && Phone.touched){
+                <span class="text-danger">*</span>
+              }
+            </label>
+
+            <input
+              name="name"
+              id="name"
+              type="number"
+              class="form-control"
+              formControlName="phone"
+              placeholder="Mobile no :"
+            />
+          </div>
+        </div>
+
+        <!-- starting time filed -->
+        <div class="col-lg-6 col-12">
+          <div class="mb-3">
+            <label class="form-label">
+              Start Time
+              @if (StartingTime && StartingTime.invalid && StartingTime.touched) {
+                <span class="text-danger">*</span>
+              }
+            </label>
+
+            <input
+              name="start_time"
+              id="start_time"
+              type="time"
+              class="form-control"
+              formControlName="start_time"
+            />
+          </div>
+        </div>
+        <!-- closing time -->
+        <div class="col-lg-6 col-12">
+          <div class="mb-3">
+            <label class="form-label">
+              Closing Time
+              @if (Close_Time && Close_Time.invalid && Close_Time.touched) {
+                <span class="text-danger">*</span>
+              }
+            </label>
+
+            <input
+              name="name"
+              id="name"
+              type="time"
+              class="form-control"
+              formControlName="close_time"
+            />
+          </div>
+        </div>
+        <!-- hospital id -->
+        <div class="col-lg-6 col-12">
+          <div class="mb-3">
+            <label class="form-label">
+              Hospital ID
+              @if (HospitalId && HospitalId.invalid && HospitalId.touched) {
+                <span class="text-danger">*</span>
+              }
+            </label>
+
+            <input
+              name="hospitalid"
+              id="hospitalid"
+              type="number"
+              class="form-control"
+              formControlName="hospitalId"
+              placeholder="Hospital id:"
+            />
+          </div>
+        </div>
+
+        <!-- email address  -->
+        <div class="col-lg-6 col-12">
+          <div class="mb-3">
+            <label class="form-label">
+              Email
+              @if (Email && Email.invalid && Email.touched) {
+                @if (Email.hasError('email')) {
+                  <span class="text-danger">*</span>  
+                }@else{
+                  <span class="text-danger">*</span>
+                }
+              }
+            </label>
+
+            <input
+              name="email"
+              id="email"
+              type="text"
+              class="form-control"
+              formControlName="email"
+              placeholder="Email"
+            />
+          </div>
+        </div>
+
+        <!-- adderss -->
+        <div class="col-lg-12 col-12">
+          <div class="mb-3">
+            <label class="form-label">Address
+              @if(Address && Address.invalid && Address.touched){
+                <span class="text-danger">*</span>
+              }
+             
+            </label>
+
+            <textarea
+              id="comments"
+              rows="2"
+              class="form-control"
+              formControlName="address"
+              placeholder="Lab address :"
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Pharmacy Type -->
+        <div class="col-lg-12 col-12">
+          <div class="mb-3">
+            <label class="form-label">Pharmacy Type
+              @if(PharmaType && PharmaType.invalid && PharmaType.touched){
+                <span class="text-danger">*</span>
+              }
+            </label>
+
+            <select class="form-select form-control" formControlName="pharmaType">
+              <option class="d-none">Select Lab Type</option>
+              <option>Individual</option>
+              <option>With EHCC</option>
+              <option>With ASG</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="modal.dismiss('Cancel click')"
+    >
+      Cancel
+    </button>
+    <button type="button" class="btn btn-primary" (click)="onSubmit()">
+      Submit
+    </button>
+  </div>
+</ng-template>

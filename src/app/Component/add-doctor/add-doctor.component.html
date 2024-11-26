@@ -1,0 +1,268 @@
+<!------- Container Fluid start ------->
+<div class="container-fluid">
+  <!------- Content area start ------->
+  <div class="layout-specing">
+    <div class="d-md-flex justify-content-between">
+      <!------- Page heading ------->
+      <h5 class="mb-0">Add New Doctor</h5>
+
+      <!------- Page breadcrumb ------->
+      <nav class="d-inline-block mt-4 mt-sm-0">
+        <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
+          <li class="breadcrumb-item">
+            <a href="dashboard.html">Telimedicine</a>
+          </li>
+          <li class="breadcrumb-item"><a href="doctors.html">Doctors</a></li>
+          <li class="breadcrumb-item active">Add Doctor</li>
+        </ul>
+      </nav>
+    </div>
+
+    <!------- Add new doctor form start ------->
+    <div class="row">
+      <div class="col-lg-12 mt-4">
+        <div class="card border-0 p-4 rounded shadow">
+          <div class="row align-items-center">
+            <!------- Doctor image ------->
+            <div class="col-lg-2 col-md-4">
+              <!-- photos/doctors/01.jpg -->
+              <img
+                [src]="url"
+                class="avatar avatar-md-md rounded-pill shadow mx-auto d-block"
+                alt=""
+              />
+            </div>
+
+            <div
+              class="col-lg-5 col-md-8 text-center text-md-start mt-4 mt-sm-0"
+            >
+              <input
+                type="file"
+                class="d-none"
+                accept="image/*"
+                id="upimage"
+                [(ngModel)]="doctorimage"
+                name="doctorimage"
+                ngDefaultControl
+                (change)="onImagePicked($event)"
+              />
+
+              <label for="upimage" class="btn btn-primary"
+                >Upload picture</label
+              >
+            </div>
+          </div>
+
+          <form class="mt-4" [formGroup]="formData" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label class="form-label"
+                    >First Name @if (firstName && firstName.invalid &&
+                    firstName.touched) {
+                    <span class="text-danger">*First is required</span>
+                    }
+                  </label>
+                  <input
+                    name="name"
+                    id="name"
+                    type="text"
+                    class="form-control"
+                    placeholder="First Name :"
+                    formControlName="firstname"
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label class="form-label"
+                    >Last Name @if (lastName && lastName.invalid &&
+                    lastName.touched) {
+                    <span class="text-danger">*Last is required</span>
+                    }
+                  </label>
+                  <input
+                    name="name"
+                    id="name2"
+                    type="text"
+                    class="form-control"
+                    placeholder="Last Name :"
+                    formControlName="lastname"
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label class="form-label">
+                    Gender @if (Gender && Gender.invalid && Gender.touched) {
+                    <span class="text-danger">*Gender is required</span>
+                    }
+                  </label>
+                  <select
+                    class="form-select form-control"
+                    formControlName="gender"
+                  >
+                    <option value="EY">Male</option>
+                    <option value="GY">Female</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label class="form-label"
+                    >Email @if (Email && Email.invalid && Email.touched){
+                    @if(Email.hasError('required')){
+                    <span class="text-danger">*Email is required</span>
+                    } @if(Email.hasError('email')){
+                    <span class="text-danger">*Invalid email format.</span>
+                    } }
+                  </label>
+                  <input
+                    name="email"
+                    id="email"
+                    type="email"
+                    class="form-control"
+                    placeholder="email :"
+                    formControlName="email"
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label class="form-label"
+                    >Phone no. @if(Phone && Phone.invalid && Phone.touched){
+                    @if(Phone.hasError("required")){
+                    <span class="text-danger">*Phone number is required.</span>
+                    } @if(Phone.hasError('minlength')||
+                    Phone.hasError('maxlength')){
+                    <span class="text-danger"
+                      >*Phon number must have 10 number</span
+                    >
+                    } }
+                  </label>
+                  <input
+                    name="number"
+                    id="number"
+                    type="text"
+                    class="form-control"
+                    placeholder="Phone no. :"
+                    formControlName="phone"
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label class="form-label"
+                    >From Authority @if (Formauthority && Formauthority.invalid
+                    && Formauthority.touched) {
+                    <span class="text-danger"
+                      >* Form Authority is required</span
+                    >
+                    }
+                  </label>
+                  <select
+                    class="form-select form-control"
+                    formControlName="formauthority"
+                  >
+                    <option>Hospital</option>
+                    <option>Clinic</option>
+                    <option>Nursing Home</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label class="form-label"
+                    >Select Authority Name @if (SelectAuthority &&
+                    SelectAuthority.invalid && SelectAuthority.touched) {
+                    <span class="text-danger"
+                      >* Authority Name is required</span
+                    >
+                    }
+                  </label>
+                  <select
+                    class="form-select form-control"
+                    formControlName="selectAuthority"
+                  >
+                    <option>Hospital 1</option>
+                    <option>Nursing Home 1</option>
+                    <option>Clinic 1</option>
+                    <option>Hospital 2</option>
+                    <option>Nursing Home 2</option>
+                    <option>Clinic 2</option>
+                    <option>Hospital 3</option>
+                    <option>Nursing Home 3</option>
+                    <option>Clinic 3</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label class="form-label"
+                    >Departments @if (Department && Department.invalid &&
+                    Department.touched) {
+                    <span class="text-danger">* Department is required</span>
+                    }
+                  </label>
+                  <select
+                    class="form-select form-control"
+                    formControlName="department"
+                  >
+                    @for (department of departments; track $index) {
+                    <option [value]="department.name">
+                      {{ department.name }}
+                    </option>
+
+                    }
+                    <!-- <option value="EY">Eye Care</option>
+                                                  <option value="GY">Gynecologist</option>
+                                                  <option value="PS">Psychotherapist</option>
+                                                  <option value="OR">Orthopedic</option>
+                                                  <option value="DE">Dentist</option>
+                                                  <option value="GA">Gastrologist</option>
+                                                  <option value="UR">Urologist</option>
+                                                  <option value="NE">Neurologist</option> -->
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label class="form-label"
+                    >Doctor's discription @if (Description &&
+                    Description.invalid && Description.touched) {
+                    <span class="text-danger">* Description is required</span>
+                    }
+                  </label>
+                  <textarea
+                    name="comments"
+                    id="comments"
+                    rows="3"
+                    class="form-control"
+                    placeholder="Discription :"
+                    formControlName="description"
+                  >
+                  </textarea>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Doctor</button>
+
+            <!-- <a href="doctors.html" class="btn btn-primary">Add Doctor</a> -->
+          </form>
+        </div>
+      </div>
+    </div>
+    <!------- Add new doctor form end ------->
+  </div>
+  <!------- Content area end ------->
+</div>
+<!------- Container Fluid end ------->

@@ -1,0 +1,22 @@
+<div class="col mt-4" (click)="Click()">
+  <div class="card team border-0 rounded shadow overflow-hidden">
+    <!------- Doctor's image ------->
+    <div class="team-img position-relative">
+      <img [src]="doctor.image" class="img-fluid" alt="" />
+    </div>
+
+    <!-- routerLink="doctorProfile/" -->
+    <!------- Dr's name and speciality ------->
+    <div class="card-body content text-center px-2">
+      <a
+        class="title text-dark h5 d-block mb-0 stretched-link"
+      >
+        {{ doctor.firstname }} {{ doctor.lastname }}
+      </a>
+
+      <small class="speciality">{{ doctor.speciality }}</small>
+    </div>
+
+    <p class="availablitybadge avilable">Avaiable</p>
+  </div>
+</div>

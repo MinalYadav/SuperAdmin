@@ -1,0 +1,300 @@
+<!------- Container Fluid start ------->
+<div class="container-fluid">
+  <!------- Content area start ------->
+  <div class="layout-specing">
+    <!------- page heading ------->
+    <h5 class="mb-0">Dashboard</h5>
+
+    <!-- <div class="row" id="cards-div">
+             <app-card></app-card>
+        </div> -->
+
+    <app-card></app-card>
+
+    <!------- Graphical Intrepetation start ------->
+    <div class="row">
+      <!------- Graphical Intrepetation of patients start ------->
+      <div class="col-xl-8 col-lg-7 mt-4">
+        <div class="card shadow border-0 p-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <!------- heading ------->
+            <h6 class="align-items-center mb-0">Patients visit</h6>
+
+            <div class="mb-0 position-relative">
+              <select class="form-select form-control" id="yearchart">
+                <option selected>2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+              </select>
+            </div>
+          </div>
+
+          <!------- graph ------->
+          <div id="dashboard" class="apex-chart"></div>
+        </div>
+      </div>
+      <!------- Graphical Intrepetation of patients end ------->
+
+      <!------- Graphical Intrepetation of Spacilities start ------->
+      <div class="col-xl-4 col-lg-5 mt-4">
+        <div class="card shadow border-0 p-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <!------- heading ------->
+            <h6 class="align-items-center mb-0">Patients by Department</h6>
+
+            <div class="mb-0 position-relative">
+              <select class="form-select form-control" id="dailychart">
+                <option selected>Today</option>
+                <option value="2019">Yesterday</option>
+              </select>
+            </div>
+          </div>
+
+          <!------- graph ------->
+          <div id="department" class="apex-chart"></div>
+        </div>
+      </div>
+      <!------- Graphical Intrepetation of Spacilities end ------->
+    </div>
+    <!------- Graphical Intrepetation end ------->
+
+    <div class="row">
+      <div class="col-xl-12 col-12 mt-4">
+        <div class="card border-0 shadow rounded">
+          <div
+            class="d-flex justify-content-between align-items-center p-4 border-bottom"
+          >
+            <h6 class="mb-0">
+              <i class="uil uil-calender text-primary me-1 h5"></i>
+              Latest Appointment
+            </h6>
+
+            <h6 class="text-muted mb-0">55 Patients</h6>
+          </div>
+
+          <div class="table-responsive bg-white shadow rounded">
+            <table class="table mb-0 table-center text-center">
+              <thead class="text-center">
+                <tr>
+                  <th class="border-bottom p-3" style="min-width: 150px">
+                    Patient Name
+                  </th>
+
+                  <th class="border-bottom p-3">Age</th>
+
+                  <th class="border-bottom p-3">Gender</th>
+
+                  <th class="border-bottom p-3">Department</th>
+
+                  <th class="border-bottom p-3" style="min-width: 150px">
+                    Date
+                  </th>
+
+                  <th class="border-bottom p-3">Time</th>
+
+                  <th class="border-bottom p-3" style="min-width: 220px">
+                    Doctor
+                  </th>
+
+                  <th class="border-bottom p-3" style="min-width: 150px">
+                    Action
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody class="text-center">
+                <tr>
+                  <td class="p-3">
+                    <a href="#" class="text-dark"> Mr. Ramraj </a>
+                  </td>
+
+                  <td class="p-3">25</td>
+
+                  <td class="p-3">Male</td>
+
+                  <td class="p-3">Cardiology</td>
+
+                  <td class="p-3">20th Dec 2020</td>
+
+                  <td class="p-3">11:00AM</td>
+
+                  <td class="p-3">
+                    <a href="#" class="text-dark"> Dr. Jasmin Ali </a>
+                  </td>
+
+                  <td class="p-3">
+                    <!------- View button ------->
+                    <a
+                      href="#"
+                      class="btn btn-icon btn-pills btn-soft-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#viewappointment"
+                    >
+                      <i class="fa-regular fa-eye"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-12 col-12 mt-4">
+        <div class="card border-0 shadow rounded">
+          <div
+            class="d-flex justify-content-between align-items-center p-4 border-bottom"
+          >
+            <h6 class="mb-0">
+              <i class="uil uil-calender text-primary me-1 h5"></i>
+              Avaiable Doctors
+            </h6>
+
+            <h6 class="text-muted mb-0">35 Doctors</h6>
+          </div>
+
+          <div class="table-responsive bg-white shadow rounded">
+            <table class="table mb-0 table-center text-center">
+              <thead class="text-center">
+                <tr>
+                  <th class="border-bottom p-3" style="min-width: 150px">
+                    Doctor Name
+                  </th>
+
+                  <th class="border-bottom p-3">Age</th>
+
+                  <th class="border-bottom p-3">Gender</th>
+
+                  <th class="border-bottom p-3">Department</th>
+
+                  <th class="border-bottom p-3" style="min-width: 150px">
+                    Action
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody class="text-center">
+                <tr>
+                  <td class="p-3">
+                    <a href="#" class="text-dark"> Mr. Ramraj </a>
+                  </td>
+
+                  <td class="p-3">25</td>
+
+                  <td class="p-3">Male</td>
+
+                  <td class="p-3">Cardiology</td>
+
+                  <td class="p-3">
+                    <!------- View button ------->
+                    <a
+                      href="Doctorprofile.html"
+                      class="btn btn-icon btn-pills btn-soft-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#viewappointment"
+                    >
+                      <i class="fa-regular fa-eye"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-12 col-12 mt-4">
+        <div class="card border-0 shadow rounded">
+          <div
+            class="d-flex justify-content-between align-items-center p-4 border-bottom"
+          >
+            <h6 class="mb-0">
+              <i class="uil uil-calender text-primary me-1 h5"></i>
+              Today's avaiable pharmacy
+            </h6>
+
+            <h6 class="text-muted mb-0">35 Pharmacies</h6>
+          </div>
+
+          <div class="table-responsive bg-white shadow rounded">
+            <table class="table mb-0 table-center text-center">
+              <thead class="text-center">
+                <tr>
+                  <th class="border-bottom p-3" style="min-width: 150px">
+                    Pharmacy Name
+                  </th>
+
+                  <th class="border-bottom p-3">Regestration/Licence Number</th>
+
+                  <th class="border-bottom p-3">Owner Name</th>
+
+                  <th class="border-bottom p-3">Type</th>
+
+                  <th class="border-bottom p-3" style="min-width: 150px">
+                    Action
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody class="text-center">
+                <tr>
+                  <td class="p-3">
+                    <a href="#" class="text-dark"> Apollo Pharmacy </a>
+                  </td>
+
+                  <td class="p-3">#TMAPPOLO0987778</td>
+
+                  <td class="p-3">Mr. Mujahid Khan</td>
+
+                  <td class="p-3">
+                    <span class="badge bg-primary"> Individual </span>
+                  </td>
+
+                  <td class="p-3">
+                    <!------- View button ------->
+                    <a
+                      href="#"
+                      class="btn btn-icon btn-pills btn-soft-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#pharmacydetails"
+                    >
+                      <i class="fa-regular fa-eye"></i>
+                    </a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td class="p-3">
+                    <a href="#" class="text-dark"> Netmeds Pharmacy </a>
+                  </td>
+
+                  <td class="p-3">#TMNETMED7788997</td>
+
+                  <td class="p-3">Mr. Sulekha Ansari</td>
+
+                  <td class="p-3">
+                    <span class="badge bg-primary"> Under EHCC Hospital </span>
+                  </td>
+
+                  <td class="p-3">
+                    <!------- View button ------->
+                    <a
+                      href="#"
+                      class="btn btn-icon btn-pills btn-soft-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#pharmacydetails"
+                    >
+                      <i class="fa-regular fa-eye"></i>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!------- Content area end ------->
+</div>
+<!------- Container Fluid end ------->

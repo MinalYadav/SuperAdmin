@@ -1,0 +1,106 @@
+<!------- Siderbar start ------->
+<nav id="sidebar" class="sidebar-wrapper">
+  <!------- Sidebar Admin logo and name ------->
+  <div class="sidebar-brand">
+    <a href="dashboard.html">
+      <img
+        src="photos/logo-icon.png"
+        height="22"
+        class="logo-light-mode"
+        alt=""
+      />
+      <span class="fs-5 fw-bold">Telimedicine</span>
+      <img
+        src="photos/logo-light.png"
+        height="22"
+        class="logo-dark-mode"
+        alt=""
+      />
+    </a>
+  </div>
+
+  <div class="sidebar-content" data-simplebar style="height: 100%">
+    <!------- Sidebar Menu list start ------->
+    <ul class="sidebar-menu">
+      <li>
+        <a href="dashboard.html">
+          <i class="fa-solid fa-gauge-high d-inline-block me-2"></i>
+          Dashboard
+        </a>
+      </li>
+
+      <li>
+        <a routerLink="appointment">
+          <i class="fa-solid fa-stethoscope me-2 d-inline-block"></i>
+          Appointments
+        </a>
+      </li>
+
+      <li class="sidebar-dropdown">
+        <a href="javascript:void(0)">
+          <i class="fa-solid fa-user-doctor d-inline-block me-2"></i>
+          Doctors
+        </a>
+
+        <!-- class="sidebar-submenu" -->
+        <div class="sidebar-sub">
+          <ul>
+            <li><a routerLink="doctors">All Doctors</a></li>
+            <li><a routerLink="addDoctor">Add Doctor</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li>
+        <a href="patients.html">
+          <i class="fa-solid fa-wheelchair d-inline-block me-2"></i>
+          Patients
+        </a>
+      </li>
+
+      <li>
+        <a routerLink="pharmacies">
+          <i class="fa-solid fa-cart-plus d-inline-block me-2"></i>
+          Pharmacies
+        </a>
+      </li>
+
+      <li>
+        <a routerLink="allHospitals">
+          <i class="fa-solid fa-circle-h d-inline-block me-2"></i>
+          Medical Authority
+        </a>
+      </li>
+
+      <li>
+        <a href="patients.html">
+          <i class="fa-solid fa-microscope d-inline-block me-2"></i>
+          Labs
+        </a>
+      </li>
+
+      <li>
+        <a href="patients.html">
+          <i class="fa-solid fa-user-shield d-inline-block me-2"></i>
+          Insurance Company
+        </a>
+      </li>
+
+      <li>
+        <a href="calendar.html">
+          <i class="fa-regular fa-calendar-days d-inline-block me-2"></i>
+          Appo. Calender
+        </a>
+      </li>
+
+      <li>
+        <a href="callcenter.html">
+          <i class="fa-solid fa-headset d-inline-block me-2"></i>
+          Call Center
+        </a>
+      </li>
+    </ul>
+    <!------- Sidebar Menu list end ------->
+  </div>
+</nav>
+<!------- Siderbar end ------->
