@@ -44,6 +44,7 @@ export class PharmaciesComponent implements OnInit {
 
   // curr operation
   currOperation = '';
+  currId = '';
 
   // Validators.pattern('[0-9]{10}')
 
@@ -77,7 +78,7 @@ export class PharmaciesComponent implements OnInit {
   }
 
   // ngb Model to add and update modal
-  onClick(modelType: string, content: any) {
+  onClick(currdata:Pharmacies|null ,modelType: string, content: any) {
     console.log('modelType', modelType);
     this.modalService.open(content, {
       ariaLabelledBy: 'modal-title',
@@ -87,6 +88,23 @@ export class PharmaciesComponent implements OnInit {
     });
 
     this.currOperation = modelType;
+    // set form data for update
+    if(modelType == 'updatePharma' && currdata !== null ){
+      console.log("current data",currdata);
+      this.currId = currdata.id;
+      this.formData.patchValue({'name': currdata.name,
+        'address': currdata.Address,
+        'owner_name': currdata.owner_name,
+        'phone': currdata.phone,
+        'email': currdata.email,
+        'hospitalId': currdata.hospitalId.toString(),
+        'registeration_number': currdata.registeration_number,
+        'start_time': currdata.start_time,
+        'close_time': currdata.close_time,
+      });
+    }else{
+      this.formData.reset();
+    }
   }
 
   onSubmit() {
@@ -115,7 +133,23 @@ export class PharmaciesComponent implements OnInit {
     //  curr operation is update
     if (this.currOperation == 'updatePharma') {
       console.log('updating....');
+      // type conversion of form data
+      this.data = this.formData.value as unknown as PharmaForm;
+      this.pharma.updatePharmacies(this.currId, this.data)
+      .subscribe({
+        next:(res)=>{
+          console.log(res.message);
+          alert(res.message);
+          this.formData.reset();
+          // calling ngOnInit again
+          this.ngOnInit();
+        },
+        error:(err)=>{
+          console.log(err);
+        }
+      })
 
+      // function of ngbModel help us to close the pop up when user click on submit button 
       this.modal.dismissAll();
     }
   }

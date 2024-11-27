@@ -20,7 +20,7 @@
 
     <div class="row mt-4">
       <div class="col-lg-4 col-12 ms-auto text-end">
-        <div class="btn btn-primary" (click)="onClick('addPharma', containt)">
+        <div class="btn btn-primary" (click)="onClick(null,'addPharma', containt)">
           <i class="fa-solid fa-circle-plus me-1"></i>
           Add New Pharmacy
         </div>
@@ -78,7 +78,7 @@
 
                 <td class="p-3">{{ item.phone }}</td>
 
-                <td class="p-3">1451 - ABC Street, Saudi arebia</td>
+                <td class="p-3">{{item.Address}}</td>
 
                 <td class="p-3">
                   <a class="text-dark">
@@ -90,7 +90,7 @@
                   <!------- Edit button ------->
                   <a
                     class="btn btn-icon btn-pills btn-soft-danger ms-2"
-                    (click)="onClick('updatePharma', containt)"
+                    (click)="onClick(item,'updatePharma', containt)"
                   >
                     <i class="fa-regular fa-pen-to-square"></i>
                   </a>
@@ -300,7 +300,7 @@
             </label>
 
             <textarea
-              id="comments"
+              id="adderss"
               rows="2"
               class="form-control"
               formControlName="address"
@@ -320,7 +320,7 @@
 
             <select class="form-select form-control" formControlName="pharmaType">
               <option class="d-none">Select Lab Type</option>
-              <option>Individual</option>
+              <option selected>Individual</option>
               <option>With EHCC</option>
               <option>With ASG</option>
             </select>

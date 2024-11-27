@@ -4,7 +4,7 @@ export interface Pharmacies{
     registeration_number:string;
     owner_name:string;
     phone:string;
-    address:string;
+    Address:string;
     email:string;
     hospitalId:string[];
     logo:string;
