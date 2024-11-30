@@ -14,6 +14,11 @@ import { BookedAppointmentComponent } from './Component/appointment/booked-appoi
 import { ClosedAppointmentComponent } from './Component/appointment/closed-appointment/closed-appointment.component';
 import { RescheduledAppointmentComponent } from './Component/appointment/rescheduled-appointment/rescheduled-appointment.component';
 import { UnderTreatmentAppointmentComponent } from './Component/appointment/under-treatment-appointment/under-treatment-appointment.component';
+import { CallCenterComponent } from './Component/call-center/call-center.component';
+import { InsuranceCompanyComponent } from './Component/insurance-company/insurance-company.component';
+import { LabsComponent } from './Component/labs/labs.component';
+import { PatientsComponent } from './Component/patients/patients.component';
+import { CallEmpProfileComponent } from './Component/call-emp-profile/call-emp-profile.component';
 
 
 export const routes: Routes = [
@@ -83,6 +88,27 @@ export const routes: Routes = [
           }
         ]
 
+      },
+      {
+        path:'callcenter',
+        component:CallCenterComponent
+      },
+      {
+        path:'callEmpProfile/:id',
+        component:CallEmpProfileComponent,
+
+      },
+      {
+        path:'insuranceCompany',
+        component:InsuranceCompanyComponent
+      },
+      {
+        path:'labs',
+        component: LabsComponent,
+      },
+      {
+        path:'patients',
+        component:PatientsComponent,
       },
     ]
   },

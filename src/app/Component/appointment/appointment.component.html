@@ -49,6 +49,7 @@
               class="nav-link active"
               [routerLink]="item.route"
               type="button"
+              (click)="onClick($index, item.route)"
             >
               {{ item.label }}
             </button>

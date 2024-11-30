@@ -36,7 +36,6 @@ export class AllHospitalComponent implements OnInit {
     private addAuthority: AddAuthorityService,
     private router: Router,
     private getHospitals: GetHospitalService,
-    private modalService: ModalService,
     private updateHospitals: UpdateHospitalService,
     private modal : NgbModal,
   ) {}
@@ -254,7 +253,7 @@ export class AllHospitalComponent implements OnInit {
 
   onClick(currId:number ,modelType: string, content: any) {
     // console.log('modelType', modelType);
-    this.modalService.open(content, {
+    this.modal.open(content, {
       ariaLabelledBy: 'modal-title',
       centered: true,
       backdrop: 'static',

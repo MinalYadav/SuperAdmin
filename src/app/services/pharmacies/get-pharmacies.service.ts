@@ -10,7 +10,7 @@ import { PharmaForm } from '../../Models/pharmaForm.model';
 })
 export class GetPharmaciesService {
 
-   // baseUrl 
+  // baseUrl 
   baseUrl = environment.baseUrl;
   url = this.baseUrl + '/hospital';
 

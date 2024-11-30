@@ -21,9 +21,9 @@ import { RouterLink } from '@angular/router';
   styleUrl: './pharmacies.component.css',
 })
 export class PharmaciesComponent implements OnInit {
+
   constructor(
     private pharma: GetPharmaciesService,
-    private modalService: ModalService,
     private modal: NgbModal
   ) {}
 
@@ -79,13 +79,14 @@ export class PharmaciesComponent implements OnInit {
 
   // ngb Model to add and update modal
   onClick(currdata:Pharmacies|null ,modelType: string, content: any) {
-    console.log('modelType', modelType);
-    this.modalService.open(content, {
+    // console.log('modelType', modelType);
+    this.modal.open(content, {
       ariaLabelledBy: 'modal-title',
       centered: true,
       backdrop: 'static',
-      keyboard: false,
+      keyboard: false,   
     });
+
 
     this.currOperation = modelType;
     // set form data for update
@@ -101,10 +102,12 @@ export class PharmaciesComponent implements OnInit {
         'registeration_number': currdata.registeration_number,
         'start_time': currdata.start_time,
         'close_time': currdata.close_time,
+        'pharmaType': "individual"
       });
     }else{
       this.formData.reset();
     }
+
   }
 
   onSubmit() {
@@ -113,8 +116,9 @@ export class PharmaciesComponent implements OnInit {
       return;
     }
 
-    //  curr operation is add
+    //  curr operation is add 
     if (this.currOperation == 'addPharma') {
+      // doing type convetion of formData into PharamFrom
       this.data = this.formData.value as unknown as PharmaForm;
       this.pharma.addPharmacies(this.data).subscribe({
         next: (res) => {
@@ -132,13 +136,12 @@ export class PharmaciesComponent implements OnInit {
 
     //  curr operation is update
     if (this.currOperation == 'updatePharma') {
-      console.log('updating....');
       // type conversion of form data
       this.data = this.formData.value as unknown as PharmaForm;
       this.pharma.updatePharmacies(this.currId, this.data)
       .subscribe({
         next:(res)=>{
-          console.log(res.message);
+          // console.log(res.message);
           alert(res.message);
           this.formData.reset();
           // calling ngOnInit again
@@ -153,6 +156,7 @@ export class PharmaciesComponent implements OnInit {
       this.modal.dismissAll();
     }
   }
+
 
   // get form data
   get Name() {

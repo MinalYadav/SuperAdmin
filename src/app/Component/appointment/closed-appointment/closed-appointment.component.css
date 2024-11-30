@@ -1,5 +1,6 @@
 .btnbox{
   background-color: #eaeaff ;
+  /* padding: 6px 12px; */
   border-radius: 25px;
   transition: all 0.3s ease;
 
@@ -7,11 +8,16 @@
 
 .btnbox :hover{
   background-color: #396cf0e6;
-  color:white;
+  /* color:blue; */
+  /* background color is not applaying properly  */
 }
 
-/* .btnbox::selection{
+
+/* ====  work same as .btnbox :hover*/
+/* a.btn.btn-icon.btn-pills.btn-soft-primary.btnbox :hover{
   background-color: #396cf0e6;
   color:white;
-  border: 2px solid #396cf0e6 ;
 } */
+
+
+/* :hover {background: blue} ===> ye work nahi kr raga hai  */ 

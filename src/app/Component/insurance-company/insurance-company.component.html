@@ -1,0 +1,340 @@
+<!------- Container Fluid start ------->
+<div class="container-fluid">
+  <!------- Content area start ------->
+  <div class="layout-specing">
+    <!------- Page heading and breadcrumb ------->
+    <div class="d-md-flex justify-content-between">
+      <!------- Page heading ------->
+      <h5 class="mb-0">Insurance Company List</h5>
+
+      <!------- Page breadcrumb ------->
+      <nav class="d-inline-block mt-4 mt-sm-0">
+        <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
+          <li class="breadcrumb-item">
+            <a href="dashboard.html">Telimedicine</a>
+          </li>
+          <li class="breadcrumb-item active">Insurance Compay</li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-lg-4 col-12 ms-auto text-end">
+        <a (click)="onClick(containt)" class="btn btn-primary">
+          <i class="fa-solid fa-circle-plus me-1"></i>
+          Add New Insurance Company
+        </a>
+      </div>
+
+      <div class="col-12 mt-4">
+        <div class="table-responsive bg-white shadow rounded">
+          <table class="table mb-0 table-center text-center">
+            <thead class="text-center">
+              <tr>
+                <th class="border-bottom p-3" style="min-width: 100px">
+                  Company Name
+                </th>
+
+                <th class="border-bottom p-3">No. of plans</th>
+
+                <th class="border-bottom p-3">
+                  No. of Hospital affilated with
+                </th>
+
+                <th class="border-bottom p-3">No. of Hospital clinic with</th>
+
+                <th class="border-bottom p-3" style="min-width: 100px">
+                  Action
+                </th>
+              </tr>
+            </thead>
+
+            <tbody class="text-center">
+              <tr>
+                <td class="p-3">
+                  <a href="#" class="text-dark">
+                    ICICI Lambord Health Insurance
+                  </a>
+                </td>
+
+                <td class="p-3">25</td>
+
+                <td class="p-3">15</td>
+
+                <td class="p-3">5</td>
+
+                <td class="p-3">
+                  <!------- View button ------->
+                  <a
+                    href="https://www.icicilombard.com/health-insurance/hap-befit-campaign/?utm_source=Google&utm_medium=Search&utm_campaign=Performance&gclid=Cj0KCQjw2cWgBhDYARIsALggUhqShBW6xXTD9lCdaWNc1l93Ivg-rXVGAIxVFwrs8HJYA2zUMjpy2A0aAu4TEALw_wcB"
+                    class="btn btn-icon btn-pills btn-soft-primary"
+                  >
+                    <i class="fa-regular fa-eye"></i>
+                  </a>
+
+                  <!------- Edit button ------->
+                  <a
+                    href="#editcompany"
+                    data-bs-toggle="modal"
+                    class="btn btn-icon btn-pills btn-soft-danger ms-2"
+                  >
+                    <i class="fa-regular fa-pen-to-square"></i>
+                  </a>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="p-3">
+                  <a href="#" class="text-dark"> HDFC ERGO Health Insurance </a>
+                </td>
+
+                <td class="p-3">25</td>
+
+                <td class="p-3">15</td>
+
+                <td class="p-3">5</td>
+
+                <td class="p-3">
+                  <!------- View button ------->
+                  <a
+                    href="https://www.hdfcergo.com/campaigns/buy-optima-secure?&utm_source=google_search&utm_medium=cpc&utm_campaign=Health_Search_Brand_Neev-Phrase&utm_adgroup=Generic-Insurance&adid=632972567247&utm_term=hdfc%20health%20insurance&utm_network=g&utm_matchtype=p&utm_device=c&utm_location=9050487&utm_sitelink={sitelink}&utm_placement=&ci=googlesearch&SEM=1&gclid=Cj0KCQjw2cWgBhDYARIsALggUhrwQj1xY96yud4t4UZCL_Hf5D0NWPxWXMlYOcsaCJtEiHShDnNMGWoaAlBCEALw_wcB"
+                    class="btn btn-icon btn-pills btn-soft-primary"
+                  >
+                    <i class="fa-regular fa-eye"></i>
+                  </a>
+
+                  <!------- Edit button ------->
+                  <a
+                    href="#editcompany"
+                    data-bs-toggle="modal"
+                    class="btn btn-icon btn-pills btn-soft-danger ms-2"
+                  >
+                    <i class="fa-regular fa-pen-to-square"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!------- Content area end ------->
+</div>
+<!------- Container Fluid end ------->
+
+
+<!-- Add insurance company modal -->  
+<ng-template #containt let-modal>
+  <div class="modal-header border-bottom">
+    <h5 class="modal-title" id="LoginForm-title">Add New Insurance Company</h5>
+
+    <button
+      type="button"
+      class="btn btn-icon btn-close"
+     (click)="modal.dismiss('cross click')"
+    >
+      <i class="fa-regular fs-4"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="p-3 rounded box-shadow">
+      <div class="row">
+        <div class="col-lg-6 col-12">
+          <div class="mb-3">
+            <label class="form-label">
+              Insurance Company Name
+              <span class="text-danger">*</span>
+            </label>
+
+            <input
+              name="name"
+              id="name"
+              type="text"
+              class="form-control"
+              placeholder="Insurace Company Name :"
+            />
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-12">
+          <div class="mb-3">
+            <label class="form-label">
+              Avaible Plans
+              <span class="text-danger">*</span>
+            </label>
+
+            <input
+              name="name"
+              id="name"
+              type="number"
+              class="form-control"
+              placeholder="No. of avaiable plans :"
+            />
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-12">
+          <div class="mb-3">
+            <label class="form-label">
+              Assositate With Hospital
+              <span class="text-danger">*</span>
+            </label>
+
+            <input
+              name="name"
+              id="name"
+              type="number"
+              class="form-control"
+              placeholder="No of assosiate hospitals :"
+            />
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-12">
+          <div class="mb-3">
+            <label class="form-label">
+              Assositate With Clinics
+              <span class="text-danger">*</span>
+            </label>
+
+            <input
+              name="name"
+              id="name"
+              type="number"
+              class="form-control"
+              placeholder="No of assosiate clinics :"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-secondary"
+      data-bs-dismiss="modal"
+      (click)="modal.dismiss('Cancel click')"
+    >
+      Close
+    </button>
+    <a href="insurancecompany.html" class="btn btn-primary">Add Company</a>
+  </div>
+</ng-template>
+
+<!-- Add insurance company modal -->
+<!-- Edit insurance company modal -->
+<!-- <div
+  class="modal fade"
+  id="editcompany"
+  tabindex="-1"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded shadow border-0">
+      <div class="modal-header border-bottom">
+        <h5 class="modal-title" id="LoginForm-title">Edit Insurance Company</h5>
+
+        <button
+          type="button"
+          class="btn btn-icon btn-close"
+          data-bs-dismiss="modal"
+          id="close-modal"
+        >
+          <i class="fa-regular fa-rectangle-xmark fs-4"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="p-3 rounded box-shadow">
+          <div class="row">
+            <div class="col-lg-6 col-12">
+              <div class="mb-3">
+                <label class="form-label">
+                  Insurance Company Name
+                  <span class="text-danger">*</span>
+                </label>
+
+                <input
+                  name="name"
+                  id="name"
+                  type="text"
+                  class="form-control"
+                  placeholder="Insurace Company Name :"
+                  value="ICICI Lambord"
+                />
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-12">
+              <div class="mb-3">
+                <label class="form-label">
+                  Avaible Plans
+                  <span class="text-danger">*</span>
+                </label>
+
+                <input
+                  name="name"
+                  id="name"
+                  type="number"
+                  class="form-control"
+                  placeholder="No. of avaiable plans :"
+                  value="33"
+                />
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-12">
+              <div class="mb-3">
+                <label class="form-label">
+                  Assositate With Hospital
+                  <span class="text-danger">*</span>
+                </label>
+
+                <input
+                  name="name"
+                  id="name"
+                  type="number"
+                  class="form-control"
+                  placeholder="No of assosiate hospitals :"
+                  value="14"
+                />
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-12">
+              <div class="mb-3">
+                <label class="form-label">
+                  Assositate With Clinics
+                  <span class="text-danger">*</span>
+                </label>
+
+                <input
+                  name="name"
+                  id="name"
+                  type="number"
+                  class="form-control"
+                  placeholder="No of assosiate clinics :"
+                  value="34"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <a href="insurancecompany.html" class="btn btn-primary"
+          >Update Company</a
+        >
+      </div>
+    </div>
+  </div>
+</div> -->
+ 

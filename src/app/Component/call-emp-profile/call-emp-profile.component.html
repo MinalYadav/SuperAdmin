@@ -1,0 +1,1195 @@
+<!------- Content area start ------->
+<div class="layout-specing">
+  <!------- Page heading and breadcrumb ------->
+  <div class="d-md-flex justify-content-between">
+    <!------- Page heading ------->
+    <h5 class="mb-0">Call Center Employee Profile</h5>
+
+    <!------- Page breadcrumb ------->
+    <nav class="d-inline-block mt-4 mt-sm-0">
+      <ul class="breadcrumb bg-transparent rounded mb-0 p-0">
+        <li class="breadcrumb-item">
+          <a href="dashboard.html">Telimedicine</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="dashboard.html">Call center</a>
+        </li>
+        <li class="breadcrumb-item active">Employee profile</li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3 col-md-5 mt-4">
+      <div class="rounded shadow overflow-hidden">
+        <div class="card border-0">
+          <!-- profile picture -->
+          <img
+            src="photos/bg/bg-profile.jpg"
+            class="img-fluid"
+            alt=""
+          />
+        </div>
+
+        <div
+          class="text-center avatar-profile margin-nagative mt-n5 position-relative pb-4 border-bottom"
+        >
+          <img
+            src="photos/client/09.jpg"
+            class="rounded-circle shadow-md avatar avatar-md-md"
+            alt=""
+          />
+
+          <h5 class="mt-3 mb-1">{{callCenterData.name}}</h5>
+
+          <p class="text-muted mb-0">
+            <span class="fw-bold text-dark"> Unique ID: </span>
+
+            {{callCenterData.uniqueId}}
+          </p>
+        </div>
+
+        <!------- Patient general details ------->
+        <div class="list-unstyled py-4 ps-3 pe-2">
+          <div class="d-flex align-items-center mt-2">
+            <i class="fa-solid fa-phone-volume text-primary me-2"></i>
+            <h6 class="mb-0">Contact No. -</h6>
+            <p class="text-muted mb-0 ms-2">{{callCenterData.mobile}}</p>
+          </div>
+
+          <div class="d-flex align-items-center mt-2">
+            <i class="fa-regular fa-clock text-primary me-2"></i>
+            <h6 class="mb-0">Employee Shift -</h6>
+            <p class="text-muted mb-0 ms-2">{{callCenterData.shift}}</p>
+          </div>
+
+          <div class="d-flex align-items-center mt-2">
+            <i class="fa-solid fa-user-doctor text-primary me-2"></i>
+            <h6 class="mb-0">Doctor Assigned -</h6>
+            <p class="text-muted mb-0 ms-2">34</p>
+          </div>
+
+          <div class="d-flex align-items-center mt-2">
+            <i class="fa-solid fa-bed me-2 text-primary"></i>
+            <h6 class="mb-0">Patient Booked -</h6>
+            <p class="text-muted mb-0 ms-2">{{callCenterData.totalBookings}}</p>
+          </div>
+
+          <div class="d-flex align-items-center mt-2">
+            <i class="fa-solid fa-heart-circle-bolt me-2 text-primary"></i>
+            <h6 class="mb-0">Emergency Booked -</h6>
+            <p class="text-muted mb-0 ms-2">{{callCenterData.emergencyBookings}}</p>
+          </div>
+
+          <div class="d-flex align-items-center mt-2">
+            <i class="fa-solid fa-location-crosshairs me-2 text-primary"></i>
+            <h6 class="mb-0">Address -</h6>
+            <p class="text-muted mb-0 ms-2">{{callCenterData.Address}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-9 col-md-7 mt-4">
+      <div class="card border-0 shadow overflow-hidden">
+        <ul
+          class="nav nav-pills nav-justified flex-column flex-sm-row rounded-0 shadow overflow-hidden mb-0"
+          id="pills-tab"
+        >
+          <li class="nav-item">
+            <a
+              class="nav-link rounded-0 active"
+              id="overview-tab"
+              data-bs-toggle="pill"
+              href="#pills-ongoingcalls"
+            >
+              <div
+                class="text-center pt-1 pb-1 d-flex align-items-center justify-content-center"
+              >
+                <i class="fa-solid fa-user-clock me-1"></i>
+                <h5 class="mb-0">Ongoing Calls</h5>
+              </div>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link rounded-0"
+              id="overview-tab"
+              data-bs-toggle="pill"
+              href="#pills-overview"
+            >
+              <div
+                class="text-center pt-1 pb-1 d-flex justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-book-medical me-2"></i>
+                <h5 class="mb-0">Doctor's Assigning History</h5>
+              </div>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link rounded-0"
+              id="history-tab"
+              data-bs-toggle="pill"
+              href="#pills-history"
+            >
+              <div
+                class="text-center pt-1 pb-1 d-flex justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-file-waveform me-1"></i>
+                <h5 class="mb-0">Patient's Booking History</h5>
+              </div>
+            </a>
+          </li>
+        </ul>
+          <!-- ongoing call -->
+        <div class="tab-content p-4" id="pills-tabContent">
+          <div class="tab-pane fade active show" id="pills-ongoingcalls">
+            <div class="table-responsive bg-white shadow rounded">
+              <table class="table mb-0 table-center text-center">
+                <thead class="text-center">
+                  <tr>
+                    <th class="border-bottom p-3">Date and Time</th>
+
+                    <th class="border-bottom p-3">Patient Name</th>
+
+                    <th class="border-bottom p-3">Patient Type</th>
+
+                    <th class="border-bottom p-3">Department</th>
+                  </tr>
+                </thead>
+
+                <tbody class="text-center">
+                  @for (item of ongoingCallsData; track $index) {
+                    <tr>
+                      <td class="p-3">
+                        <span>{{item.appointment.date}}</span>
+                        <br />
+                        <!-- {{item.appointment.slot}} -->
+                        <span>(12.45 PM)</span>
+                      </td>
+  
+                      <td class="p-3">{{item.appointment.userName}}</td>
+  
+                      <td class="p-3">
+                        <span class="badge bg-success">{{item.appointment.userStatus}} Patient </span>
+                      </td>
+  
+                      <td class="p-3">{{item.appointment.departmentName==null?'Eye care': item.appointment.departmentName}}</td>
+                    </tr>
+                  }
+                  <!-- <tr>
+                    <td class="p-3">
+                      <span>12/02/2-23</span>
+                      <br />
+                      <span>(12.45 PM)</span>
+                    </td>
+
+                    <td class="p-3">Abdul Razak</td>
+
+                    <td class="p-3">
+                      <span class="badge bg-success"> New Patient </span>
+                    </td>
+
+                    <td class="p-3">Cardiology</td>
+                  </tr>
+
+                  <tr>
+                    <td class="p-3">
+                      <span>12/02/2-23</span>
+                      <br />
+                      <span>(12.45 PM)</span>
+                    </td>
+
+                    <td class="p-3">Abdul Razak</td>
+
+                    <td class="p-3">
+                      <span class="badge bg-primary"> Existing Patient </span>
+                    </td>
+
+                    <td class="p-3">Cardiology</td>
+                  </tr>
+
+                  <tr>
+                    <td class="p-3">
+                      <span>12/02/2-23</span>
+                      <br />
+                      <span>(12.45 PM)</span>
+                    </td>
+
+                    <td class="p-3">Abdul Razak</td>
+
+                    <td class="p-3">
+                      <span class="badge bg-success"> New Patient </span>
+                    </td>
+
+                    <td class="p-3">Cardiology</td>
+                  </tr>
+
+                  <tr>
+                    <td class="p-3">
+                      <span>12/02/2-23</span>
+                      <br />
+                      <span>(12.45 PM)</span>
+                    </td>
+
+                    <td class="p-3">Abdul Razak</td>
+
+                    <td class="p-3">
+                      <span class="badge bg-primary"> Existing Patient </span>
+                    </td>
+
+                    <td class="p-3">Cardiology</td>
+                  </tr> -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="pills-overview">
+            <div class="row">
+              <div class="col-lg-12 col-12 mt-4">
+                <div class="table-responsive bg-white shadow rounded">
+                  <table class="table mb-0 table-center text-center">
+                    <thead class="text-center">
+                      <tr>
+                        <th class="border-bottom p-3">Date and Time</th>
+
+                        <th class="border-bottom p-3">Authority</th>
+
+                        <th class="border-bottom p-3">Department</th>
+
+                        <th class="border-bottom p-3">Doctor</th>
+
+                        <th class="border-bottom p-3">Status</th>
+
+                        <th class="border-bottom p-3">Action</th>
+                      </tr>
+                    </thead>
+
+                    <tbody class="text-center">
+                      @for (item of doctorData; track $index) {
+                        <tr>
+                          <td class="p-3">
+                            <span>{{item.date}}</span>
+                            <br />
+                            <span>{{item.start_time}}</span>
+                          </td>
+  
+                          <td class="p-3">
+                            <a href="#!" class="text-decoration-underline">
+                              EHCC Hospital
+                            </a>
+                          </td>
+  
+                          <td class="p-3">{{item.doctor.departmentId}}</td>
+  
+                          <td class="p-3">
+                            <a
+                              href="Doctorprofile.html"
+                              class="text-decoration-underline"
+                            >
+                              {{item.doctor.firstname}}
+                            </a>
+                          </td>
+  
+                          <td class="p-3">
+                            <span class="badge bg-info">{{item.doctor.status}} </span>
+                          </td>
+  
+                          <td class="p-3">
+                            <!------- View button ------->
+                            <a
+                              href="appointmentdetails.html"
+                              class="fw-bold text-decoration-underline"
+                            >
+                              See Appointment
+                            </a>
+                          </td>
+                        </tr>
+  
+                      }
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="pills-history">
+            <div class="table-responsive bg-white shadow rounded">
+              <table class="table mb-0 table-center text-center">
+                <thead class="text-center">
+                  <tr>
+                    <th class="border-bottom p-3">Date and Time</th>
+
+                    <th class="border-bottom p-3">Authority</th>
+
+                    <th class="border-bottom p-3">Department</th>
+
+                    <th class="border-bottom p-3">Doctor</th>
+
+                    <th class="border-bottom p-3">Status</th>
+
+                    <th class="border-bottom p-3">Action</th>
+                  </tr>
+                </thead>
+
+                <tbody class="text-center">
+                  <tr>
+                    <td class="p-3">
+                      <span>12/02/2-23</span>
+                      <br />
+                      <span>(12.45 PM)</span>
+                    </td>
+
+                    <td class="p-3">
+                      <a href="#!" class="text-decoration-underline">
+                        EHCC Hospital
+                      </a>
+                    </td>
+
+                    <td class="p-3">Cardiology</td>
+
+                    <td class="p-3">
+                      <a
+                        href="Doctorprofile.html"
+                        class="text-decoration-underline"
+                      >
+                        Dr. Jasmin Ali
+                      </a>
+                    </td>
+
+                    <td class="p-3">
+                      <span class="badge bg-info"> Closed </span>
+                    </td>
+
+                    <td class="p-3">
+                      <!------- View button ------->
+                      <a
+                        href="appointmentdetails.html"
+                        class="fw-bold text-decoration-underline"
+                      >
+                        See Appointment
+                      </a>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="p-3">
+                      <span>12/02/2-23</span>
+                      <br />
+                      <span>(12.45 PM)</span>
+                    </td>
+
+                    <td class="p-3">
+                      <a href="#!" class="text-decoration-underline">
+                        EHCC Hospital
+                      </a>
+                    </td>
+
+                    <td class="p-3">Cardiology</td>
+
+                    <td class="p-3">
+                      <a
+                        href="Doctorprofile.html"
+                        class="text-decoration-underline"
+                      >
+                        Dr. Jasmin Ali
+                      </a>
+                    </td>
+
+                    <td class="p-3">
+                      <span class="badge bg-warning"> Rescheduled </span>
+                    </td>
+
+                    <td class="p-3">
+                      <!------- View button ------->
+                      <a
+                        href="appointmentdetails.html"
+                        class="fw-bold text-decoration-underline"
+                      >
+                        See Appointment
+                      </a>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="p-3">
+                      <span>12/02/2-23</span>
+                      <br />
+                      <span>(12.45 PM)</span>
+                    </td>
+
+                    <td class="p-3">
+                      <a href="#!" class="text-decoration-underline">
+                        EHCC Hospital
+                      </a>
+                    </td>
+
+                    <td class="p-3">Cardiology</td>
+
+                    <td class="p-3">
+                      <a
+                        href="Doctorprofile.html"
+                        class="text-decoration-underline"
+                      >
+                        Dr. Jasmin Ali
+                      </a>
+                    </td>
+
+                    <td class="p-3">
+                      <span class="badge bg-danger"> Pending </span>
+                    </td>
+
+                    <td class="p-3">
+                      <!------- View button ------->
+                      <a
+                        href="appointmentdetails.html"
+                        class="fw-bold text-decoration-underline"
+                      >
+                        See Appointment
+                      </a>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="p-3">
+                      <span>12/02/2-23</span>
+                      <br />
+                      <span>(12.45 PM)</span>
+                    </td>
+
+                    <td class="p-3">
+                      <a href="#!" class="text-decoration-underline">
+                        EHCC Hospital
+                      </a>
+                    </td>
+
+                    <td class="p-3">Cardiology</td>
+
+                    <td class="p-3">
+                      <a
+                        href="Doctorprofile.html"
+                        class="text-decoration-underline"
+                      >
+                        Dr. Jasmin Ali
+                      </a>
+                    </td>
+
+                    <td class="p-3">
+                      <span class="badge bg-success"> Booked </span>
+                    </td>
+
+                    <td class="p-3">
+                      <!------- View button ------->
+                      <a
+                        href="appointmentdetails.html"
+                        class="fw-bold text-decoration-underline"
+                      >
+                        See Appointment
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="pills-experience">
+            <h5 class="mb-0">Account Notifications :</h5>
+
+            <div class="p-4">
+              <div class="d-flex justify-content-between pb-4">
+                <h6 class="mb-0 fw-normal">
+                  When someone books my appointment
+                </h6>
+
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    value=""
+                    id="customSwitch1"
+                  />
+
+                  <label class="form-check-label" for="customSwitch1"></label>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between py-4 border-top">
+                <h6 class="mb-0 fw-normal">When someone rise a dispute</h6>
+
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="customSwitch2"
+                    checked
+                  />
+
+                  <label class="form-check-label" for="customSwitch2"></label>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between py-4 border-top">
+                <h6 class="mb-0 fw-normal">When payment recives</h6>
+
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="customSwitch3"
+                  />
+
+                  <label class="form-check-label" for="customSwitch3"></label>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between py-4 border-top">
+                <h6 class="mb-0 fw-normal">When shop stock is less</h6>
+
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="customSwitch4"
+                    checked
+                  />
+
+                  <label class="form-check-label" for="customSwitch4"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-12 mt-4">
+      <div class="card border-0 shadow overflow-hidden">
+        <ul
+          class="nav nav-pills nav-justified flex-column flex-sm-row rounded-0 shadow overflow-hidden mb-0"
+          id="pills-tab"
+        >
+          <li class="nav-item">
+            <a
+              class="nav-link rounded-0"
+              id="overview-tab"
+              data-bs-toggle="pill"
+              href="#pills-drLIst"
+            >
+              <div
+                class="text-center pt-1 pb-1 d-flex align-items-center justify-content-center"
+              >
+                <i class="fa-solid fa-user-clock me-1"></i>
+                <h5 class="mb-0">All Assigned Dr's List</h5>
+              </div>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link rounded-0"
+              id="overview-tab"
+              data-bs-toggle="pill"
+              href="#pills-pATIentslIST"
+            >
+              <div
+                class="text-center pt-1 pb-1 d-flex justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-book-medical me-2"></i>
+                <h5 class="mb-0">All booked Patient's List</h5>
+              </div>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link rounded-0"
+              id="history-tab"
+              data-bs-toggle="pill"
+              href="#pills-Recalldrs"
+            >
+              <div
+                class="text-center pt-1 pb-1 d-flex justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-business-time me-1"></i>
+                <h5 class="mb-0">Dr's On Reminder</h5>
+              </div>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link rounded-0 active"
+              id="history-tab"
+              data-bs-toggle="pill"
+              href="#pills-Recallpatinets"
+            >
+              <div
+                class="text-center pt-1 pb-1 d-flex justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-stopwatch me-1"></i>
+                <h5 class="mb-0">Patient's On Reminder</h5>
+              </div>
+            </a>
+          </li>
+        </ul>
+
+        <div class="tab-content p-4" id="pills-tabContent">
+          <div class="tab-pane fade" id="pills-drLIst">
+            <div class="table-responsive bg-white shadow rounded">
+              <table class="table mb-0 table-center text-center">
+                <thead class="text-center">
+                  <tr>
+                    <th class="border-bottom p-3">Date and Time</th>
+
+                    <th class="border-bottom p-3">Authority</th>
+
+                    <th class="border-bottom p-3">Department</th>
+
+                    <th class="border-bottom p-3">Doctor</th>
+
+                    <th class="border-bottom p-3">Appointment Status</th>
+
+                    <th class="border-bottom p-3">Action</th>
+                  </tr>
+                </thead>
+
+                <tbody class="text-center">
+                  @for (item of doctorData; track $index) {
+                    <tr>
+                      <td class="p-3">
+                        <span>{{item.date}}</span>
+                        <br />
+                        <span>{{item.start_time}}</span>
+                      </td>
+  
+                      <td class="p-3">
+                        <a  class="text-decoration-underline">
+                          EHCC Hospital
+                        </a>
+                      </td>
+  
+                      <td class="p-3">{{item.doctor.departmentId}}</td>
+  
+                      <td class="p-3">
+                        <a
+                          href="Doctorprofile.html"
+                          class="text-decoration-underline"
+                        >
+                         {{item.doctor.firstname}}
+                        </a>
+                      </td>
+  
+                      <td class="p-3">
+                        <span class="badge bg-info"> {{item.doctor.status}} </span>
+                      </td>
+  
+                      <td class="p-3">
+                        <!------- View button ------->
+                        <a
+                          href="appointmentdetails.html"
+                          class="fw-bold text-decoration-underline"
+                        >
+                          See Details
+                        </a>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="pills-pATIentslIST">
+            <div class="table-responsive bg-white shadow rounded">
+              <table class="table mb-0 table-center text-center">
+                <thead class="text-center">
+                  <tr>
+                    <th class="border-bottom p-3">Date and Time</th>
+
+                    <th class="border-bottom p-3">Authority</th>
+
+                    <th class="border-bottom p-3">Department</th>
+
+                    <th class="border-bottom p-3">Doctor</th>
+
+                    <th class="border-bottom p-3">Booking Status</th>
+
+                    <th class="border-bottom p-3">Action</th>
+                  </tr>
+                </thead>
+
+                <tbody class="text-center">
+                  <tr>
+                    <td class="p-3">
+                      <span>12/02/2-23</span>
+                      <br />
+                      <span>(12.45 PM)</span>
+                    </td>
+
+                    <td class="p-3">
+                      <a href="#!" class="text-decoration-underline">
+                        EHCC Hospital
+                      </a>
+                    </td>
+
+                    <td class="p-3">Cardiology</td>
+
+                    <td class="p-3">
+                      <a
+                        href="Doctorprofile.html"
+                        class="text-decoration-underline"
+                      >
+                        Dr. Jasmin Ali
+                      </a>
+                    </td>
+
+                    <td class="p-3">
+                      <span class="badge bg-info"> Closed </span>
+                    </td>
+
+                    <td class="p-3">
+                      <!------- View button ------->
+                      <a
+                        href="appointmentdetails.html"
+                        class="fw-bold text-decoration-underline"
+                      >
+                        See Details
+                      </a>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="p-3">
+                      <span>12/02/2-23</span>
+                      <br />
+                      <span>(12.45 PM)</span>
+                    </td>
+
+                    <td class="p-3">
+                      <a href="#!" class="text-decoration-underline">
+                        EHCC Hospital
+                      </a>
+                    </td>
+
+                    <td class="p-3">Cardiology</td>
+
+                    <td class="p-3">
+                      <a
+                        href="Doctorprofile.html"
+                        class="text-decoration-underline"
+                      >
+                        Dr. Jasmin Ali
+                      </a>
+                    </td>
+
+                    <td class="p-3">
+                      <span class="badge bg-danger"> Cancelled </span>
+                    </td>
+
+                    <td class="p-3">
+                      <!------- View button ------->
+                      <a
+                        href="appointmentdetails.html"
+                        class="fw-bold text-decoration-underline"
+                      >
+                        See Details
+                      </a>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="p-3">
+                      <span>12/02/2-23</span>
+                      <br />
+                      <span>(12.45 PM)</span>
+                    </td>
+
+                    <td class="p-3">
+                      <a href="#!" class="text-decoration-underline">
+                        EHCC Hospital
+                      </a>
+                    </td>
+
+                    <td class="p-3">Cardiology</td>
+
+                    <td class="p-3">
+                      <a
+                        href="Doctorprofile.html"
+                        class="text-decoration-underline"
+                      >
+                        Dr. Jasmin Ali
+                      </a>
+                    </td>
+
+                    <td class="p-3">
+                      <span class="badge bg-info"> Closed </span>
+                    </td>
+
+                    <td class="p-3">
+                      <!------- View button ------->
+                      <a
+                        href="appointmentdetails.html"
+                        class="fw-bold text-decoration-underline"
+                      >
+                        See Details
+                      </a>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="p-3">
+                      <span>12/02/2-23</span>
+                      <br />
+                      <span>(12.45 PM)</span>
+                    </td>
+
+                    <td class="p-3">
+                      <a href="#!" class="text-decoration-underline">
+                        EHCC Hospital
+                      </a>
+                    </td>
+
+                    <td class="p-3">Cardiology</td>
+
+                    <td class="p-3">
+                      <a
+                        href="Doctorprofile.html"
+                        class="text-decoration-underline"
+                      >
+                        Dr. Jasmin Ali
+                      </a>
+                    </td>
+
+                    <td class="p-3">
+                      <span class="badge bg-info"> Closed </span>
+                    </td>
+
+                    <td class="p-3">
+                      <!------- View button ------->
+                      <a
+                        href="appointmentdetails.html"
+                        class="fw-bold text-decoration-underline"
+                      >
+                        See Details
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="pills-Recalldrs">
+            <div class="table-responsive bg-white shadow rounded">
+              <table class="table mb-0 table-center text-center">
+                <thead class="text-center">
+                  <tr>
+                    <th class="border-bottom p-3">
+                      Reminder
+                      <br />
+                      Date and Time
+                    </th>
+
+                    <th class="border-bottom p-3">Authority</th>
+
+                    <th class="border-bottom p-3">Department</th>
+
+                    <th class="border-bottom p-3">Doctor</th>
+
+                    <th class="border-bottom p-3">Booked By Patient</th>
+
+                    <th class="border-bottom p-3">Treatment Status</th>
+
+                    <th class="border-bottom p-3">Action</th>
+                  </tr>
+                </thead>
+
+                <tbody class="text-center">
+                  <tr>
+                    <td class="p-3">
+                      <span>12/02/2-23</span>
+                      <br />
+                      <span>(12.45 PM)</span>
+                    </td>
+
+                    <td class="p-3">
+                      <a href="#!" class="text-decoration-underline">
+                        EHCC Hospital
+                      </a>
+                    </td>
+
+                    <td class="p-3">Cardiology</td>
+
+                    <td class="p-3">
+                      <a
+                        href="Doctorprofile.html"
+                        class="text-decoration-underline"
+                      >
+                        Dr. Jasmin Ali
+                      </a>
+                    </td>
+
+                    <td class="p-3">
+                      <a
+                        href="patient_profile.html"
+                        class="text-decoration-underline"
+                      >
+                        Patient 1
+                      </a>
+                    </td>
+
+                    <td class="p-3">
+                      <span class="badge bg-success"> Completed </span>
+                    </td>
+
+                    <td class="p-3">
+                      <!------- View button ------->
+                      <a
+                        href="appointmentdetails.html"
+                        class="fw-bold text-decoration-underline"
+                      >
+                        See Details
+                      </a>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="p-3">
+                      <span>12/02/2-23</span>
+                      <br />
+                      <span>(12.45 PM)</span>
+                    </td>
+
+                    <td class="p-3">
+                      <a href="#!" class="text-decoration-underline">
+                        EHCC Hospital
+                      </a>
+                    </td>
+
+                    <td class="p-3">Cardiology</td>
+
+                    <td class="p-3">
+                      <a
+                        href="Doctorprofile.html"
+                        class="text-decoration-underline"
+                      >
+                        Dr. Jasmin Ali
+                      </a>
+                    </td>
+
+                    <td class="p-3">
+                      <a
+                        href="patient_profile.html"
+                        class="text-decoration-underline"
+                      >
+                        Patient 2
+                      </a>
+                    </td>
+
+                    <td class="p-3">
+                      <span class="badge bg-warning"> Under Treatment </span>
+                    </td>
+
+                    <td class="p-3">
+                      <!------- View button ------->
+                      <a
+                        href="appointmentdetails.html"
+                        class="fw-bold text-decoration-underline"
+                      >
+                        See Details
+                      </a>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="p-3">
+                      <span>12/02/2-23</span>
+                      <br />
+                      <span>(12.45 PM)</span>
+                    </td>
+
+                    <td class="p-3">
+                      <a href="#!" class="text-decoration-underline">
+                        EHCC Hospital
+                      </a>
+                    </td>
+
+                    <td class="p-3">Cardiology</td>
+
+                    <td class="p-3">
+                      <a
+                        href="Doctorprofile.html"
+                        class="text-decoration-underline"
+                      >
+                        Dr. Jasmin Ali
+                      </a>
+                    </td>
+
+                    <td class="p-3">
+                      <a
+                        href="patient_profile.html"
+                        class="text-decoration-underline"
+                      >
+                        Patient 3
+                      </a>
+                    </td>
+
+                    <td class="p-3">
+                      <span class="badge bg-success"> Completed </span>
+                    </td>
+
+                    <td class="p-3">
+                      <!------- View button ------->
+                      <a
+                        href="appointmentdetails.html"
+                        class="fw-bold text-decoration-underline"
+                      >
+                        See Details
+                      </a>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="p-3">
+                      <span>12/02/2-23</span>
+                      <br />
+                      <span>(12.45 PM)</span>
+                    </td>
+
+                    <td class="p-3">
+                      <a href="#!" class="text-decoration-underline">
+                        EHCC Hospital
+                      </a>
+                    </td>
+
+                    <td class="p-3">Cardiology</td>
+
+                    <td class="p-3">
+                      <a
+                        href="Doctorprofile.html"
+                        class="text-decoration-underline"
+                      >
+                        Dr. Jasmin Ali
+                      </a>
+                    </td>
+
+                    <td class="p-3">
+                      <a
+                        href="patient_profile.html"
+                        class="text-decoration-underline"
+                      >
+                        Patient 4
+                      </a>
+                    </td>
+
+                    <td class="p-3">
+                      <span class="badge bg-warning"> Under Treatment </span>
+                    </td>
+
+                    <td class="p-3">
+                      <!------- View button ------->
+                      <a
+                        href="appointmentdetails.html"
+                        class="fw-bold text-decoration-underline"
+                      >
+                        See Details
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="tab-pane fade show active" id="pills-Recallpatinets">
+            <div class="table-responsive bg-white shadow rounded">
+              <table class="table mb-0 table-center text-center">
+                <thead class="text-center">
+                  <tr>
+                    <th class="border-bottom p-3">
+                      Reminder
+                      <br />
+                      Date and Time
+                    </th>
+
+                    <th class="border-bottom p-3">Authority</th>
+
+                    <th class="border-bottom p-3">Department</th>
+
+                    <th class="border-bottom p-3">Patient Name</th>
+
+                    <th class="border-bottom p-3">Appointment Booked With</th>
+
+                    <th class="border-bottom p-3">Treatment Status</th>
+
+                    <th class="border-bottom p-3">Action</th>
+                  </tr>
+                </thead>
+
+                <tbody class="text-center">
+                  @for (item of ongoingCallsData; track $index) {
+                    <tr>
+                      <td class="p-3">
+                        <span>{{item.appointment.date}}</span>
+                        <br />
+                        <span>(12.45 PM)</span>
+                      </td>
+  
+                      <td class="p-3">
+                        <a href="#!" class="text-decoration-underline">
+                          EHCC Hospital
+                        </a>
+                      </td>
+  
+                      <td class="p-3">{{item.appointment.departmentName==null? 'Eye care': item.appointment.departmentName}}</td>
+  
+                      <td class="p-3">
+                        <a
+                          href="patient_profile.html"
+                          class="text-decoration-underline"
+                        >
+                          {{item.appointment.userName}}
+                        </a>
+                      </td>
+  
+                      <td class="p-3">
+                        <a
+                          href="Doctorprofile.html"
+                          class="text-decoration-underline"
+                        >
+                          Dr. Jasmin Ali
+                        </a>
+                      </td>
+  
+                      <td class="p-3">
+                        <span class="badge bg-success">{{item.appointment.userStatus}}</span>
+                      </td>
+  
+                      <td class="p-3">
+                        <!------- View button ------->
+                        <a
+                          href="appointmentdetails.html"
+                          class="fw-bold text-decoration-underline"
+                        >
+                          See Details
+                        </a>
+                      </td>
+                    </tr>
+  
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!------- Content area start ------->

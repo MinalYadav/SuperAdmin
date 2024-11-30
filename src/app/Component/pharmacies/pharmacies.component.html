@@ -13,17 +13,21 @@
           <li class="breadcrumb-item">
             <a routerLink="/layout/adminDashboard">Telimedicine</a>
           </li>
-          <li  class="breadcrumb-item active">Pharmacies</li>
+          <li class="breadcrumb-item active">Pharmacies</li>
         </ul>
       </nav>
     </div>
 
     <div class="row mt-4">
       <div class="col-lg-4 col-12 ms-auto text-end">
-        <div class="btn btn-primary" (click)="onClick(null,'addPharma', containt)">
+        <div
+          class="btn btn-primary"
+          (click)="onClick(null, 'addPharma', containt)"
+        >
           <i class="fa-solid fa-circle-plus me-1"></i>
           Add New Pharmacy
         </div>
+        <!-- ok toh jab bhi hum ngb model ko button ke jariye call krenge toh aries hidden ki error aaye gi toh iss error ko solve krne ke liye hum ngb model ko button mai call na krke hum usse div ya a tag mai call krte hai  -->
         <!-- <a  data-bs-toggle="modal" class="btn btn-primary">
           <i class="fa-solid fa-circle-plus me-1"></i>
           Add New Pharmacy
@@ -63,22 +67,22 @@
               @for (item of pharmaData; track $index) {
               <tr>
                 <td class="p-3">
-                  <a  class="text-dark">{{ item.name }}</a>
+                  <a class="text-dark">{{ item.name }}</a>
                 </td>
 
                 <td class="p-3">
-                  <a  class="text-dark">
+                  <a class="text-dark">
                     {{ item.registeration_number }}
                   </a>
                 </td>
 
                 <td class="p-3">
-                  <a  class="text-dark">{{ item.owner_name }}</a>
+                  <a class="text-dark">{{ item.owner_name }}</a>
                 </td>
 
                 <td class="p-3">{{ item.phone }}</td>
 
-                <td class="p-3">{{item.Address}}</td>
+                <td class="p-3">{{ item.Address }}</td>
 
                 <td class="p-3">
                   <a class="text-dark">
@@ -90,13 +94,12 @@
                   <!------- Edit button ------->
                   <a
                     class="btn btn-icon btn-pills btn-soft-danger ms-2"
-                    (click)="onClick(item,'updatePharma', containt)"
+                    (click)="onClick(item, 'updatePharma', containt)"
                   >
                     <i class="fa-regular fa-pen-to-square"></i>
                   </a>
                 </td>
               </tr>
-
               }
             </tbody>
           </table>
@@ -109,8 +112,10 @@
 <!------- Container Fluid end ------->
 
 <ng-template #containt let-modal>
-  <div class="modal-header" >
-    <h5 class="modal-title" id="modal-title">{{currOperation == 'addPharma'?'Add New Pharmacy':' Edit Pharmacy'}}</h5>
+  <div class="modal-header">
+    <h5 class="modal-title" id="modal-title">
+      {{ currOperation == "addPharma" ? "Add New Pharmacy" : " Edit Pharmacy" }}
+    </h5>
     <button
       type="button"
       class="btn-close"
@@ -125,9 +130,8 @@
         <div class="col-lg-6 col-12">
           <div class="mb-3">
             <label class="form-label">
-              Pharmacy Name
-              @if (Name && Name.invalid && Name.touched) {
-                <span class="text-danger">*</span>
+              Pharmacy Name @if (Name && Name.invalid && Name.touched) {
+              <span class="text-danger">*</span>
               }
             </label>
 
@@ -146,9 +150,9 @@
         <div class="col-lg-6 col-12">
           <div class="mb-3">
             <label class="form-label">
-              Regestration Number
-              @if (Registeration_number && Registeration_number.invalid && Registeration_number.touched) {
-                <span class="text-danger">*</span>
+              Regestration Number @if (Registeration_number &&
+              Registeration_number.invalid && Registeration_number.touched) {
+              <span class="text-danger">*</span>
               }
             </label>
 
@@ -167,9 +171,9 @@
         <div class="col-lg-6 col-12">
           <div class="mb-3">
             <label class="form-label">
-              Owner Name
-              @if (Owner_name && Owner_name.invalid && Owner_name.touched) {
-                <span class="text-danger">*</span>
+              Owner Name @if (Owner_name && Owner_name.invalid &&
+              Owner_name.touched) {
+              <span class="text-danger">*</span>
               }
             </label>
 
@@ -188,9 +192,8 @@
         <div class="col-lg-6 col-12">
           <div class="mb-3">
             <label class="form-label">
-              Mobile
-              @if(Phone && Phone.invalid && Phone.touched){
-                <span class="text-danger">*</span>
+              Mobile @if(Phone && Phone.invalid && Phone.touched){
+              <span class="text-danger">*</span>
               }
             </label>
 
@@ -209,9 +212,9 @@
         <div class="col-lg-6 col-12">
           <div class="mb-3">
             <label class="form-label">
-              Start Time
-              @if (StartingTime && StartingTime.invalid && StartingTime.touched) {
-                <span class="text-danger">*</span>
+              Start Time @if (StartingTime && StartingTime.invalid &&
+              StartingTime.touched) {
+              <span class="text-danger">*</span>
               }
             </label>
 
@@ -228,9 +231,9 @@
         <div class="col-lg-6 col-12">
           <div class="mb-3">
             <label class="form-label">
-              Closing Time
-              @if (Close_Time && Close_Time.invalid && Close_Time.touched) {
-                <span class="text-danger">*</span>
+              Closing Time @if (Close_Time && Close_Time.invalid &&
+              Close_Time.touched) {
+              <span class="text-danger">*</span>
               }
             </label>
 
@@ -244,12 +247,13 @@
           </div>
         </div>
         <!-- hospital id -->
+        @if(currOperation == 'addPharma'){
         <div class="col-lg-6 col-12">
           <div class="mb-3">
             <label class="form-label">
-              Hospital ID
-              @if (HospitalId && HospitalId.invalid && HospitalId.touched) {
-                <span class="text-danger">*</span>
+              Hospital ID @if (HospitalId && HospitalId.invalid &&
+              HospitalId.touched) {
+              <span class="text-danger">*</span>
               }
             </label>
 
@@ -263,19 +267,19 @@
             />
           </div>
         </div>
+        }
 
         <!-- email address  -->
+        @if(currOperation == 'addPharma'){
         <div class="col-lg-6 col-12">
           <div class="mb-3">
             <label class="form-label">
-              Email
-              @if (Email && Email.invalid && Email.touched) {
-                @if (Email.hasError('email')) {
-                  <span class="text-danger">*</span>  
-                }@else{
-                  <span class="text-danger">*</span>
-                }
-              }
+              Email @if (Email && Email.invalid && Email.touched) { @if
+              (Email.hasError('email')) {
+              <span class="text-danger">*</span>
+              }@else{
+              <span class="text-danger">*</span>
+              } }
             </label>
 
             <input
@@ -288,15 +292,15 @@
             />
           </div>
         </div>
+        }
 
         <!-- adderss -->
         <div class="col-lg-12 col-12">
           <div class="mb-3">
-            <label class="form-label">Address
-              @if(Address && Address.invalid && Address.touched){
-                <span class="text-danger">*</span>
+            <label class="form-label"
+              >Address @if(Address && Address.invalid && Address.touched){
+              <span class="text-danger">*</span>
               }
-             
             </label>
 
             <textarea
@@ -312,17 +316,21 @@
         <!-- Pharmacy Type -->
         <div class="col-lg-12 col-12">
           <div class="mb-3">
-            <label class="form-label">Pharmacy Type
-              @if(PharmaType && PharmaType.invalid && PharmaType.touched){
-                <span class="text-danger">*</span>
+            <label class="form-label"
+              >Pharmacy Type @if(PharmaType && PharmaType.invalid &&
+              PharmaType.touched){
+              <span class="text-danger">*</span>
               }
             </label>
 
-            <select class="form-select form-control" formControlName="pharmaType">
+            <select
+              class="form-select form-control"
+              formControlName="pharmaType"
+            >
               <option class="d-none">Select Lab Type</option>
-              <option selected>Individual</option>
-              <option>With EHCC</option>
-              <option>With ASG</option>
+              <option value="individual">Individual</option>
+              <option value="EHCC">With EHCC</option>
+              <option value="ASG">With ASG</option>
             </select>
           </div>
         </div>
